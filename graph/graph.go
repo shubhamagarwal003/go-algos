@@ -7,7 +7,9 @@ import (
 )
 
 type Edge struct {
-	dest *Node
+	dest   *Node
+	src    *Node
+	weight int
 }
 
 type Node struct {
@@ -23,15 +25,15 @@ func (g *Graph) AddNode(node *Node) {
 	g.nodes = append(g.nodes, node)
 }
 
-func (g *Graph) AddUndirectedEdge(node1 *Node, node2 *Node) {
-	e1 := &Edge{dest: node1}
-	e2 := &Edge{dest: node2}
+func (g *Graph) AddUndirectedEdge(node1 *Node, node2 *Node, weight int) {
+	e1 := &Edge{dest: node1, src: node2, weight: weight}
+	e2 := &Edge{dest: node2, src: node1, weight: weight}
 	node1.edges = append(node1.edges, e2)
 	node2.edges = append(node2.edges, e1)
 }
 
-func (g *Graph) AddDirectedEdge(node1 *Node, node2 *Node) {
-	e := &Edge{dest: node2}
+func (g *Graph) AddDirectedEdge(node1 *Node, node2 *Node, weight int) {
+	e := &Edge{dest: node2, src: node1, weight: weight}
 	node1.edges = append(node1.edges, e)
 }
 

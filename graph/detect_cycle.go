@@ -89,3 +89,37 @@ func (g *Graph) detectCycleUndirectedUtil(node *Node, visited map[*Node]bool, cu
 	currentNodes = append(currentNodes[:i], currentNodes[i+1:]...)
 	return flag
 }
+
+func (g *Graph) HasOddCycle() bool {
+	color := make(map[*Node]int)
+	flag := false
+	for _, node := range g.nodes {
+		color[node] = 0
+	}
+	for _, node := range g.nodes {
+		if color[node] == 0 {
+			color[node] = 1
+			flag = flag || g.hasOddCycleUtil(node, color)
+		}
+	}
+	return flag
+}
+
+func (g *Graph) hasOddCycleUtil(node *Node, color map[*Node]int) bool {
+	flag := false
+	for _, e := range node.edges {
+		if color[e.dest] == 0 {
+			if color[node] == 1 {
+				color[e.dest] = 2
+			} else {
+				color[e.dest] = 1
+			}
+			flag = flag || g.hasOddCycleUtil(e.dest, color)
+		} else {
+			if color[e.dest] == color[node] {
+				return true
+			}
+		}
+	}
+	return flag
+}
