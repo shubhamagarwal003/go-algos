@@ -2,11 +2,59 @@ package main
 
 import (
 	"fmt"
-	"github.com/shubhamagarwal003/go-algos/graph"
+	// "github.com/shubhamagarwal003/go-algos/graph"
+	"github.com/shubhamagarwal003/go-algos/avl"
 	// "reflect"
 )
 
 func main() {
+	a := avl.NewAvlNode(4)
+	a = a.Insert(3)
+	a = a.Insert(5)
+	a = a.Insert(1)
+	a = a.Insert(2)
+	a.Print()
+	// fmt.Println("a", a)
+	// fmt.Println("a", a)
+	// a.Print()
+}
+
+/*func main() {
+	t := trie.NewTrieNode()
+	t.Insert("there")
+	t.Insert("their")
+	t.Insert("these")
+	t.Insert("the")
+	fmt.Println("....")
+	fmt.Println(t.Find("there"))
+	fmt.Println(t.Find("the"))
+	fmt.Println(t.Find("ant"))
+	t.Delete("the")
+	fmt.Println(t.Find("the"))
+	t.Delete("there")
+	fmt.Println(t.Find("there"))
+	t.Print()
+}*/
+
+/*func main() {
+	b := heap.NewHeap()
+	b.Insert(4)
+	b.Insert(1)
+	b.Insert(3)
+	b.Insert(14)
+	b.Insert(2)
+	b.Insert(10)
+	fmt.Println(b)
+	b.DecreaseKey(2, 5)
+	fmt.Println(b)
+	// a, err := b.ExtractMin()
+	// for err == nil {
+	// 	fmt.Println(a)
+	// 	a, err = b.ExtractMin()
+	// }
+}*/
+
+/*func main() {
 	g := graph.NewGraph()
 	n1 := graph.NewNode(1)
 	n2 := graph.NewNode(2)
@@ -42,4 +90,4 @@ func main() {
 	// g.DFS()
 	// fmt.Println("No of Paths: ", g.CountAllPaths(n1, n4))
 	// g.BFS()
-}
+}*/
